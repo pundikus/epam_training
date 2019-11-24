@@ -1,7 +1,10 @@
-﻿using System;
-
-namespace NET.W._2019.Pundis._01
+﻿namespace NET.W._2019.Pundis._01
 {
+    using System;
+    
+    /// <summary>
+    /// Class for Quicksorting
+    /// </summary>
     class QuickSorter
     {
         /// <summary>
@@ -20,13 +23,8 @@ namespace NET.W._2019.Pundis._01
         /// <param name="minIndex">first element of array</param>
         /// <param name="maxIndex">last element of array</param>
         /// <returns>index of the reference element</returns>
-        static int Partition(int[] array, int minIndex, int maxIndex)
+        private static int Partition(int[] array, int minIndex, int maxIndex)
         {
-            if(array == null)
-            {
-                throw new ArgumentNullException("array is empty");
-            }
-
             var pivot = minIndex - 1;
             for (var i = minIndex; i < maxIndex; i++)
             {
@@ -48,13 +46,8 @@ namespace NET.W._2019.Pundis._01
         /// This method recursively sorts array before and after the reference element
         /// </summary>
         /// <returns>sorted array</returns>
-        static int[] QuickSort(int[] array, int minIndex, int maxIndex)
+        private static int[] QuickSort(int[] array, int minIndex, int maxIndex)
         {
-            if (array == null)
-            {
-                throw new ArgumentNullException("array is empty");
-            }
-
             if (minIndex >= maxIndex)
             {
                 return array;
@@ -67,6 +60,11 @@ namespace NET.W._2019.Pundis._01
             return array;
         }
 
+        /// <summary>
+        /// This Method sort initial array
+        /// </summary>
+        /// <param name="array">initial array</param>
+        /// <returns>sort array</returns>
         public static int[] QuickSort(int[] array)
         {
             if (array == null)
@@ -79,6 +77,9 @@ namespace NET.W._2019.Pundis._01
 
     }
 
+    /// <summary>
+    /// Class for Mergesorting
+    /// </summary>
     class MergeSorter
     {
         /// <summary>
@@ -87,13 +88,8 @@ namespace NET.W._2019.Pundis._01
         /// <param name="lowIndex">first element of array</param>
         /// <param name="middleIndex">mid array</param>
         /// <param name="highIndex">last element of array</param>
-        static void Merge(int[] array, int lowIndex, int middleIndex, int highIndex)
+        private static void Merge(int[] array, int lowIndex, int middleIndex, int highIndex)
         {
-            if (array == null)
-            {
-                throw new ArgumentNullException("array is empty");
-            }
-
             var left = lowIndex;
             var right = middleIndex + 1;
             var tempArray = new int[highIndex - lowIndex + 1];
@@ -139,13 +135,8 @@ namespace NET.W._2019.Pundis._01
         /// <param name="lowIndex">first element of array</param>
         /// <param name="highIndex">last element of array</param>
         /// <returns>sorted array</returns>
-        static int[] MergeSort(int[] array, int lowIndex, int highIndex)
+        private static int[] MergeSort(int[] array, int lowIndex, int highIndex)
         {
-            if (array == null)
-            {
-                throw new ArgumentNullException("array is empty");
-            }
-
             if (lowIndex < highIndex)
             {
                 var middleIndex = (lowIndex + highIndex) / 2;
@@ -157,6 +148,11 @@ namespace NET.W._2019.Pundis._01
             return array;
         }
 
+        /// <summary>
+        /// This Method sort initial array
+        /// </summary>
+        /// <param name="array">initial array</param>
+        /// <returns>sort array</returns>
         public static int[] MergeSort(int[] array)
         {
             if (array == null)
@@ -165,29 +161,6 @@ namespace NET.W._2019.Pundis._01
             }
 
             return MergeSort(array, 0, array.Length - 1);
-        }
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var array = new int[10] {5, 2, -1, 3, 6, 20, -4, 0, 5, 12};
-
-            var quick_arr = QuickSorter.QuickSort(array);
-            var merge_arr = MergeSorter.MergeSort(array);
-
-            foreach (var item in quick_arr)
-            {
-                Console.WriteLine(item);
-            }
-
-            if(quick_arr == merge_arr)
-            {
-                Console.WriteLine("done");
-            }
-
-            Console.ReadLine();
         }
     }
 }
