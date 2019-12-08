@@ -39,7 +39,7 @@ namespace tests1_2
         [TestCase(double.PositiveInfinity, ExpectedResult = "0111111111110000000000000000000000000000000000000000000000000000")]
         [TestCase(-0.0, ExpectedResult = "1000000000000000000000000000000000000000000000000000000000000000")]
         [TestCase(0.0, ExpectedResult = "0000000000000000000000000000000000000000000000000000000000000000")]
-        public string DoubleToBinaryStringTest(double number) => NumberRepresentationConverter.DoubleToBinaryString(number);
+        public string DoubleToBinaryStringTest(double number) => DoubleExtension.DoubleToBinaryString(number);
 
     }
 }
